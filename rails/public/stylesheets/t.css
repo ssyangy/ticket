@@ -83,6 +83,7 @@ a{
 }
 table{
 	text-align:left;
+	border-collapse:collapse;
 }
 table td, table th{
 	padding-right:15px;

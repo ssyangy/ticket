@@ -9,8 +9,10 @@
 </p>
 <% if @project.owner == current_user.id %>
 <%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Admin', admin_project_path(@project) %>
+<%= link_to 'Admin', admin_project_path(@project) %> |
 <%end%>
+<%= link_to 'Milestones', project_milestones_path(@project)%> |
+<%= link_to 'Members', project_members_path(@project)%>
 <hr />
 <h2>Tickets</h2>
 

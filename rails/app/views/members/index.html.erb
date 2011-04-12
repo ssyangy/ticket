@@ -1,2 +1,24 @@
-<h1>Members#index</h1>
-<p>Find me in app/views/members/index.html.erb</p>
+<h1><%=@project.name%>'s members</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+	<th>Join date</th>
+    <th></th>
+  </tr>
+
+<% @members.each do |m| %>
+  <tr>
+    <td><%= User.find(m.user_id).login %></td>
+	<td><%= m.created_at %></td>
+	<td>
+		<%= link_to 'Remove', m, :confirm => 'Are you sure?', :method => :delete %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to '+ New Member', new_project_member_path %> |
+<%= link_to 'Back to project', project_path(@project) %>

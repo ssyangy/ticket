@@ -1,9 +1,23 @@
 class MembersController < ApplicationController
 
   def new
+    @project = Project.find(session[:project])
+    @member = Member.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @member }
+    end
   end
 
   def index
+    @project = Project.find(session[:project])
+    @members = @project.members
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @members }
+    end
   end
   
   def create

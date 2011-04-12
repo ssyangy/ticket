@@ -1,6 +1,7 @@
-<h1>Members#new</h1>
-<p>Find me in app/views/members/new.html.erb</p>
 
-<% form_for([@project, @member]) do |f| %>
-	<%=f.text_field 'user_id'%>
-<% end %>
+
+<h1>New member</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', project_members_path(@project) %>

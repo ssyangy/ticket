@@ -1,28 +1,27 @@
-<h1>Listing milestones</h1>
+<h1><%=@project.name%>'s milestones</h1>
 
 <table>
   <tr>
     <th>Name</th>
+	<th>Due date</th>
     <th>Desc</th>
-    <th>Project</th>
-    <th></th>
-    <th></th>
     <th></th>
   </tr>
 
 <% @milestones.each do |milestone| %>
   <tr>
     <td><%= milestone.name %></td>
+	<td><%= milestone.due_date %></td>
     <td><%= milestone.desc %></td>
-    <td><%= milestone.project_id %></td>
-    <td><%= link_to 'Show', project_milestones_path(milestone) %></td>
-    <td><%= link_to 'Edit', edit_project_milestone_path(@project, milestone) %></td>
-    <td><%= link_to 'Destroy', milestone, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', project_milestones_path(milestone) %> |
+    	<%= link_to 'Edit', edit_project_milestone_path(@project, milestone) %> |
+    	<%= link_to 'Destroy', milestone, :confirm => 'Are you sure?', :method => :delete %>
+    </td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Milestone', new_project_milestone_path %> |
-<%= link_to 'Back to admin', admin_project_path(@project) %>
+<%= link_to '+ New Milestone', new_project_milestone_path %> |
+<%= link_to 'Back to project', project_path(@project) %>

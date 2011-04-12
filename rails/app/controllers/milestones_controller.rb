@@ -3,7 +3,7 @@ class MilestonesController < ApplicationController
   # GET /milestones.xml
   def index
     @project = Project.find(session[:project])
-    @milestones = Milestone.all
+    @milestones = @project.milestones
 
     respond_to do |format|
       format.html # index.html.erb
@@ -43,7 +43,9 @@ class MilestonesController < ApplicationController
   # POST /milestones
   # POST /milestones.xml
   def create
-    @milestone = Milestone.new(:name => params[:milestone][:name], :desc => params[:milestone][:desc], :project_id => session[:project])
+    @project = Project.find(session[:project])
+    @milestone = Milestone.new(:name => params[:milestone][:name], :desc => params[:milestone][:desc], :project_id => session[:project],
+                              :due_date => params[:milestone][:due_date])
 
     respond_to do |format|
       if @milestone.save
@@ -75,6 +77,8 @@ class MilestonesController < ApplicationController
   # DELETE /milestones/1
   # DELETE /milestones/1.xml
   def destroy
+    # check if milestone was referenced or not
+    
     @milestone = Milestone.find(params[:id])
     @project = Project.find(@milestone.project_id)
     @milestone.destroy

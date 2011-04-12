@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   before_filter :require_user
 
+private
   # GET /projects
   # GET /projects.xml
   def index
@@ -11,7 +12,8 @@ class ProjectsController < ApplicationController
       format.xml  { render :xml => @projects }
     end
   end
-
+  
+public
   # GET /projects/1
   # GET /projects/1.xml
   def show

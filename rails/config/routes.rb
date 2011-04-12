@@ -1,22 +1,18 @@
 Code::Application.routes.draw do
   resources :todos
 
-  resources :milestones
-
-  get "members/new"
-
-  get "members/index"
-
   resources :tickets do
     collection do
       get 'backlog'
     end
   end
   
+  resources :milestones
   resources :members
   
   resources :projects do
     resources :milestones
+    resources :members
     member do
       get 'admin'
     end
