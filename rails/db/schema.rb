@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110411123637) do
+ActiveRecord::Schema.define(:version => 20110412145417) do
 
   create_table "members", :force => true do |t|
     t.integer  "project_id"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(:version => 20110411123637) do
 
   create_table "projects", :force => true do |t|
     t.string   "name"
-    t.string   "desc"
+    t.text     "desc",       :limit => 255
     t.integer  "owner"
     t.datetime "created_at"
     t.datetime "updated_at"
