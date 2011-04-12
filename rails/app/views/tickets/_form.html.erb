@@ -1,0 +1,60 @@
+<script>
+$(function() {
+	$( "#ticket_est_start, #ticket_est_end" ).datepicker({ dateFormat: 'yy-mm-dd' });
+});
+</script>
+
+
+
+
+<%= form_for(@ticket) do |f| %>
+  <% if @ticket.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ticket.errors.count, "error") %> prohibited this ticket from being saved:</h2>
+
+      <ul>
+      <% @ticket.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :content %><br />
+    <%= f.text_area :content, :rows => 6, :cols => 60 %>
+  </div>
+  <div class="field">
+	<table>
+		<tbody>
+			<tr>
+				<td><%= f.label :priority %><br />
+			    <%= f.select :priority, Ticket::Priorities, :selected => @ticket.priority %>
+				</td>
+				<td>
+					<%= f.label :assignee %><br />
+				    <%= f.select :assignee, @members.collect {|p| [User.find(p.user_id).login, p.user_id]}, :selected => @ticket.assignee %>
+				</td>
+				<td>
+					<%= f.label :milestone %><br />
+					<%= f.select :milestone_id, @milestones.collect {|m| [m.name, m.id]}, :selected => @ticket.milestone_id%>
+				</td>
+			</tr>
+			<tr>
+				<td><%= f.label "Est. start"%><br />
+					<%= f.text_field :est_start, {:size => 11}%>
+				</td>
+				<td><%= f.label "Est. end"%><br />
+					<%= f.text_field :est_end, {:size => 11}%>
+				</td>
+				<td><%= f.label :status %><br />
+			    	<%= f.select :status, Ticket::Statuses, :selected => @ticket.status %>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

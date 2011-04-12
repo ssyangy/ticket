@@ -1,0 +1,16 @@
+<h2>Project Admin</h2>
+<h3>Members:</h3>
+<% @members.each do |m|%>
+	<p><%=User.find(m.user_id).login%></p>
+<% end %>
+<% form_for @new_member do |f| %>
+	<%=f.hidden_field 'project_id', :value => @project.id%>
+	<%=f.text_field 'user'%>
+	<%=f.submit 'Add Member'%>
+<% end %>
+<br />
+
+<hr />
+<%=link_to "milestones", project_milestones_path(@project)%>
+<hr />
+<%=link_to "Back to project", @project %>

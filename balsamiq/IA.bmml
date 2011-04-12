@@ -1,0 +1,14 @@
+<mockup version="1.0" skin="sketch" measuredW="611" measuredH="208" mockupW="224" mockupH="29">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::ButtonBar" x="467" y="169" w="-1" h="-1" measuredW="134" measuredH="29" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>All%2C%20By%20people</text>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::Button" x="377" y="170" w="-1" h="-1" measuredW="68" measuredH="28" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Backlog</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  content: MyText
+  owner: 1
+  priority: MyString
+  status: MyString
+  assignee: 1
+
+two:
+  content: MyText
+  owner: 1
+  priority: MyString
+  status: MyString
+  assignee: 1

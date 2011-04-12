@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Code</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+	<link type="text/css" href="/stylesheets/redmond/jquery-ui-1.8.11.custom.css" rel="stylesheet" />	
+	<script type="text/javascript" src="/javascripts/jquery-1.5.1.min.js"></script>
+	<script type="text/javascript" src="/javascripts/jquery-ui-1.8.11.custom.min.js"></script>
+</head>
+<body>
+	<div>
+		<div style="float:right;">
+			Welcome: <%=current_user.login%>!
+			<%=link_to 'Login', login_path %>
+			<%=link_to 'Logout', logout_path %>
+		</div>
+		<%=link_to 'Projects', projects_path %>
+	</div>
+	<hr />
+	<%= yield %>
+
+</body>
+</html>

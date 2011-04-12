@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Code</title>
+  <%= stylesheet_link_tag :all %>
+  <%= csrf_meta_tag %>
+	<link type="text/css" href="/stylesheets/redmond/jquery-ui-1.8.11.custom.css" rel="stylesheet" />	
+	<script type="text/javascript" src="/javascripts/jquery-1.5.1.min.js"></script>
+	<script type="text/javascript" src="/javascripts/jquery-ui-1.8.11.custom.min.js"></script>
+  <%= javascript_include_tag 'rails', 'application' %> 
+</head>
+<body>
+
+	<div id="nav">
+		<h1 id="logo">Ticket</h1>
+		<div id="navbar-outer">
+			<ul id="navbar">
+				<% if session[:nav] == 0%>
+					<li class="navbar-item navbar-item-selected">Dashboard</li>
+				<%else%>
+					<li class="navbar-item"><%=link_to 'Dashboard', :controller => 'dashboard'%></li>
+				<%end%>
+				<% @projects = User.find(1).projects%>
+				<% @projects.each do |p|%>
+					<% if session[:nav] == p.id %>
+						<li class="navbar-item navbar-item-selected"><%=p.name%></li>
+					<%else%>
+						<li class="navbar-item"><%=link_to p.name, p%></li>
+					<%end%>
+				<%end%>
+				<% if session[:nav] == -1%>
+					<li class="navbar-item navbar-item-selected">+ New Project</li>
+				<%else%>
+					<li class="navbar-item"><%=link_to "+ New Project", new_project_path%></li>
+				<%end%>
+			</ul>
+		</div>
+		<%=link_to current_user.login, account_path, :class=>"navbar-item"%>
+		<%=link_to 'Sign out', logout_path, :class => "navbar-item"%>
+		<p class="navbar-text">© 2011</p>
+		<%=link_to 'feedback', logout_path, :class => "navbar-item"%>
+	</div>
+	<div id="content">
+		<div id="content-inner">
+			<%= yield %>
+		</div>
+	</div>
+
+</body>
+</html>

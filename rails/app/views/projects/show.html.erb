@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <h3>Project: <%= @project.name %></h3>
+</p>
+
+<p>
+  <%= @project.desc %>
+</p>
+<% if @project.owner == current_user.id %>
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Admin', admin_project_path(@project) %>
+<%end%>
+<hr />
+<h2>Tickets</h2>
+
+<%=link_to 'Backlog', backlog_tickets_path, :remote => true%> |
+<%=link_to 'All', @project, {:class => 'mr30'}%>
+<%= link_to '+ New Ticket', new_ticket_path %>
+<!--<%=link_to 'By People'%>-->
+<br />
+<div id="tickets">
+	<h4>All tickets:</h4>
+	<%=render :partial => 'tickets/ticket', :object => @tickets%>		
+</div>

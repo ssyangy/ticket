@@ -1,0 +1,27 @@
+<h1>Welcome to Ticket!</h1><br />
+<h3>What are you going to kill today?</h3>
+
+<%= form_for(@todo) do |f| %>
+  <% if @todo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@todo.errors.count, "error") %> prohibited this todo from being saved:</h2>
+
+      <ul>
+      <% @todo.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.text_field :content, {:size => 50} %><%= f.submit %>
+  </div>
+<% end %>
+
+<p id="notice"><%= notice %></p>
+<% @todos.each do |t|%>
+	<p><%=t.content%><span class="mr30"></span><%= link_to 'Edit', edit_ticket_path(t) %> |
+	<%= link_to 'Destroy', t, :confirm => 'Are you sure?', :method => :delete %>
+    </p>
+<%end%>

@@ -1,0 +1,27 @@
+<table cellspacing="0">
+  <tr>
+		<th>Priority</th>
+		<th>Status</th>
+		<th width="300">Content</th>
+		<th>Est. start</th>
+		<th>Est. end</th>
+		<th>Milestone</th>
+		<th>Assignee</th>
+	    <th></th>
+  </tr>
+	<% @tickets.each do |ticket|%>
+	<tr <%if ticket.status == 'Finish'%>class="finish"<%end%>>
+		<td><%=ticket.priority%></td>
+		<td><%=ticket.status%></td>
+		<td><%=ticket.content%></td>
+		<td><%=ticket.est_start%></td>
+		<td><%=ticket.est_end%></td>
+		<td><%=Milestone.find(ticket.milestone_id).name%></td>
+		<td><%=User.find(ticket.assignee).login%></td>
+	    <td><%= link_to 'Show', ticket %> |
+			<%= link_to 'Edit', edit_ticket_path(ticket) %> |
+			<%= link_to 'Destroy', ticket, :confirm => 'Are you sure?', :method => :delete %>
+		</td>
+	</tr>
+	<% end %>
+</table>
