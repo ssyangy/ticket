@@ -95,3 +95,9 @@ table th{
 table .finish{
 	color:#ccc;
 }
+.current_label{
+	background-color:#6b72bf;
+	color:#fff;
+	padding:2px 5px;
+	font-size:0.85em;
+}

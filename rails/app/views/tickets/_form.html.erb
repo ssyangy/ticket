@@ -6,7 +6,6 @@ $(function() {
 
 
 
-
 <%= form_for(@ticket) do |f| %>
   <% if @ticket.errors.any? %>
     <div id="error_explanation">
@@ -21,6 +20,11 @@ $(function() {
   <% end %>
 
   <div class="field">
+    <%= f.label :type %><br />
+    <%= f.radio_button :ticket_type, 0, :checked => @ticket.ticket_type.nil?? true : @ticket.ticket_type == 0 %><%= f.label :type_feature, "feature"%>
+	<%= f.radio_button :ticket_type, 1 %><%= f.label :type_issue, "issue"%>
+  </div>
+  <div class="field">
     <%= f.label :content %><br />
     <%= f.text_area :content, :rows => 6, :cols => 60 %>
   </div>
@@ -32,12 +36,12 @@ $(function() {
 			    <%= f.select :priority, Ticket::Priorities, :selected => @ticket.priority %>
 				</td>
 				<td>
-					<%= f.label :assignee %><br />
-				    <%= f.select :assignee, @members.collect {|p| [User.find(p.user_id).login, p.user_id]}, :selected => @ticket.assignee %>
-				</td>
-				<td>
 					<%= f.label :milestone %><br />
 					<%= f.select :milestone_id, @milestones.collect {|m| [m.name, m.id]}, :selected => @ticket.milestone_id%>
+				</td>
+				<td>
+					<%= f.label :assignee %><br />
+				    <%= f.select :assignee, @members.collect {|p| [User.find(p.user_id).login, p.user_id]}, :selected => @ticket.assignee %>
 				</td>
 			</tr>
 			<tr>

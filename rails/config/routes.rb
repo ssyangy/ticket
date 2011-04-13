@@ -3,7 +3,7 @@ Code::Application.routes.draw do
 
   resources :tickets do
     collection do
-      get 'backlog'
+      get 'filter'
     end
   end
   

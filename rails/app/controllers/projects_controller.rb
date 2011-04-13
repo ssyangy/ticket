@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+  require 'pp'
+  
   before_filter :require_user
 
 private
@@ -21,7 +23,12 @@ public
     session[:project] = @project.id
     session[:nav] = @project.id
 
-    @tickets = @project.tickets
+    pp "session[:user_type] = #{session[:user_type]}, session[:ticket_type] = #{session[:ticket_type]}"
+    session[:user_type] = session[:user_type].nil?? 1 : session[:user_type]
+    session[:ticket_type] = session[:ticket_type].nil?? 0 : session[:ticket_type]
+    pp "session[:user_type] = #{session[:user_type]}, session[:ticket_type] = #{session[:ticket_type]}"
+    
+    @tickets = Ticket.filter(@project.id, current_user.id, session[:ticket_type])
 
     respond_to do |format|
       format.html # show.html.erb

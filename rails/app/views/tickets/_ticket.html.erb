@@ -1,5 +1,6 @@
 <table>
   <tr>
+		<th>#</th>
 		<th>Priority</th>
 		<th>Status</th>
 		<th width="300">Content</th>
@@ -11,12 +12,13 @@
   </tr>
 	<% @tickets.each do |ticket|%>
 	<tr <%if ticket.status == 'Finish'%>class="finish"<%end%>>
+		<td><%=ticket.id%></td>
 		<td><%=ticket.priority%></td>
 		<td><%=ticket.status%></td>
 		<td><%=ticket.content%></td>
 		<td><%=ticket.est_start%></td>
 		<td><%=ticket.est_end%></td>
-		<td><%=Milestone.find(ticket.milestone_id).name%></td>
+		<td><%if ticket.milestone_id%><%=Milestone.find(ticket.milestone_id).name%><%end%></td>
 		<td><%=User.find(ticket.assignee).login%></td>
 	    <td><%= link_to 'Show', ticket %> |
 			<%= link_to 'Edit', edit_ticket_path(ticket) %> |

@@ -2,26 +2,28 @@
 
 <table>
   <tr>
+	<th>#</th>
     <th>Content</th>
     <th>Owner</th>
     <th>Priority</th>
     <th>Status</th>
     <th>Assignee</th>
-    <th></th>
-    <th></th>
+	<th>Type</th>
     <th></th>
   </tr>
 
 <% @tickets.each do |ticket| %>
   <tr>
+	<td><%= ticket.id%></td>
     <td><%= ticket.content %></td>
-    <td><%= ticket.owner %></td>
+    <td><%= User.find(ticket.owner).login %></td>
     <td><%= ticket.priority %></td>
     <td><%= ticket.status %></td>
-    <td><%= ticket.assignee %></td>
-    <td><%= link_to 'Show', ticket %></td>
-    <td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
-    <td><%= link_to 'Destroy', ticket, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= User.find(ticket.assignee).login %></td>
+	<td><%= ticket.ticket_type == 0? "feature" : "issue"%></td>
+    <td><%= link_to 'Show', ticket %> |
+    	<%= link_to 'Edit', edit_ticket_path(ticket) %> |
+    	<%= link_to 'Destroy', ticket, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

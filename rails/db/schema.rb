@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110412145417) do
+ActiveRecord::Schema.define(:version => 20110413062229) do
 
   create_table "members", :force => true do |t|
     t.integer  "project_id"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20110412145417) do
     t.integer  "milestone_id"
     t.date     "est_start"
     t.date     "est_end"
+    t.integer  "ticket_type"
   end
 
   create_table "todos", :force => true do |t|

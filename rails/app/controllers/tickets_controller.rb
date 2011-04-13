@@ -1,19 +1,34 @@
 class TicketsController < ApplicationController
+  require 'pp'
   # GET /tickets
   # GET /tickets.xml
   def index
-    @tickets = Ticket.all
+    @tickets = Ticket.where("project_id = ?", session[:project])
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @tickets }
     end
   end
+  
+  def filter
+    #pp "params[:user_type] = #{params[:user_type]}, params[:ticket_type] = #{params[:ticket_type]}"
+    #pp "session[:user_type] = #{session[:user_type]}, session[:ticket_type] = #{session[:ticket_type]}"
 
-  def backlog
-    @tickets = Ticket.where("assignee = ? and project_id = ?", current_user.id, session[:project])
+    @project = Project.find(session[:project])
+    session[:user_type] = params[:user_type].nil?? session[:user_type] : params[:user_type]
+    session[:ticket_type] = params[:ticket_type].nil?? session[:ticket_type] : params[:ticket_type]
+
+    #pp "session[:user_type] = #{session[:user_type]}, session[:ticket_type] = #{session[:ticket_type]}"
+    
+    if session[:user_type].to_i == 0
+      @tickets = Ticket.filter(@project.id, nil, params[:ticket_type])
+    else
+      @tickets = Ticket.filter(@project.id, current_user.id, params[:ticket_type])
+    end
+    render "tickets/filter.js.erb"
   end
-
+  
 
   # GET /tickets/1
   # GET /tickets/1.xml
@@ -57,7 +72,8 @@ class TicketsController < ApplicationController
     @project = Project.find(session[:project])
     @ticket = Ticket.new(:content => params[:ticket][:content], :owner => current_user.id, :priority => params[:ticket][:priority], 
                         :status => params[:ticket][:status], :assignee => params[:ticket][:assignee], :project_id => session[:project],
-                        :milestone_id => params[:ticket][:milestone_id], :est_start => params[:ticket][:est_start], :est_end => params[:ticket][:est_end])
+                        :milestone_id => params[:ticket][:milestone_id], :est_start => params[:ticket][:est_start], :est_end => params[:ticket][:est_end],
+                        :ticket_type => params[:ticket][:ticket_type])
 
     respond_to do |format|
       if @ticket.save
