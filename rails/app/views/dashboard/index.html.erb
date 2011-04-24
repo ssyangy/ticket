@@ -1,6 +1,6 @@
 <h1>Welcome to Ticket!</h1><br />
+<!--
 <h3>What are you going to kill today?</h3>
-
 <%= form_for(@todo) do |f| %>
   <% if @todo.errors.any? %>
     <div id="error_explanation">
@@ -25,3 +25,5 @@
 	<%= link_to 'Destroy', t, :confirm => 'Are you sure?', :method => :delete %>
     </p>
 <%end%>
+
+->

@@ -20,8 +20,7 @@
 		<td><%=ticket.est_end%></td>
 		<td><%if ticket.milestone_id%><%=Milestone.find(ticket.milestone_id).name%><%end%></td>
 		<td><%=User.find(ticket.assignee).login%></td>
-	    <td><%= link_to 'Show', ticket %> |
-			<%= link_to 'Edit', edit_ticket_path(ticket) %> |
+	    <td><%= link_to 'Edit', edit_ticket_path(ticket) %> |
 			<%= link_to 'Destroy', ticket, :confirm => 'Are you sure?', :method => :delete %>
 		</td>
 	</tr>
