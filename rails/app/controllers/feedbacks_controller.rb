@@ -3,7 +3,8 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks.xml
   def index
     @feedback = Feedback.new
-    @feedbacks = Feedback.order("created_at DESC")
+    @user = User.find(current_user.id)
+    @feedbacks = @user.feedbacks.order("created_at DESC")
 
     respond_to do |format|
       format.html # index.html.erb
