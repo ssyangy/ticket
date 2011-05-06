@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>app/controllers/users_controller.rb</string>
+	<string>app/controllers/projects_controller.rb</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -84,9 +84,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>20</integer>
 				<key>line</key>
-				<integer>24</integer>
+				<integer>7</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -149,6 +149,20 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>app/views/users/_form.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>55</integer>
+				<key>line</key>
+				<integer>10</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
@@ -158,12 +172,13 @@
 		<string>app/views/projects/show.html.erb</string>
 		<string>app/controllers/user_sessions_controller.rb</string>
 		<string>app/controllers/users_controller.rb</string>
+		<string>app/views/users/_form.erb</string>
 		<string>app/views/tickets/_ticket.html.erb</string>
 		<string>app/controllers/tickets_controller.rb</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{84, 0}, {1089, 878}}</string>
+	<string>{{56, 0}, {1044, 746}}</string>
 </dict>
 </plist>
