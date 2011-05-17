@@ -1,4 +1,6 @@
 Code::Application.routes.draw do
+  resources :feedbacks
+
   resources :todos
 
   resources :tickets do

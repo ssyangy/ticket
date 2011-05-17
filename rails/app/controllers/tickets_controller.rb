@@ -29,7 +29,7 @@ class TicketsController < ApplicationController
     render "tickets/filter.js.erb"
   end
   
-
+private
   # GET /tickets/1
   # GET /tickets/1.xml
   def show
@@ -40,7 +40,8 @@ class TicketsController < ApplicationController
       format.xml  { render :xml => @ticket }
     end
   end
-
+  
+public
   # GET /tickets/new
   # GET /tickets/new.xml
   def new

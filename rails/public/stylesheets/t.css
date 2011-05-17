@@ -101,3 +101,15 @@ table .finish{
 	padding:2px 5px;
 	font-size:0.85em;
 }
+
+.fb{
+	margin-bottom:20px;
+}
+.fb-content{
+	width:500px;
+	border:1px solid #999;
+	padding:15px 20px;
+}
+.fb-author{
+	color:#aaa;
+}
