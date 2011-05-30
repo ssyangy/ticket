@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <h3>Project: <%= @project.name %></h3>
+</p>
+
+<p>
+  <%= @project.desc %>
+</p>
+<% if @project.owner == current_user.id %>
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%end%>
+<%= link_to 'Milestones', project_milestones_path(@project)%> |
+<%= link_to 'Members', project_members_path(@project)%>
+<hr />
+<h2>Tickets</h2>
+
+<div id="tickets">
+	<% if session[:ticket_type].to_i == 0 %>
+		<label class="current_label ui-corner-all">Feature</label> | <%=link_to 'Issue', {:controller => 'tickets', :action => 'filter', :ticket_type => 1}, {:remote => true, :class => 'mr30'}%>
+	<%else%>
+		<%=link_to 'Feature', {:controller => 'tickets', :action => 'filter', :ticket_type => 0}, :remote => true%> | <label class="current_label ui-corner-all mr30">Issue</label>
+	<%end%>
+
+	<% if session[:user_type].to_i == 0 %>
+		<%=link_to 'Backlog', {:controller => 'tickets', :action => 'filter', :user_type => 1}, :remote => true%> | <label class="current_label ui-corner-all mr30">All</label>
+	<%else%>
+	<label class="current_label ui-corner-all">Backlog</label> | <%=link_to 'All', {:controller => 'tickets', :action => 'filter', :user_type => 0}, {:remote => true, :class => 'mr30'}%>
+	<%end%>
+
+	<%= link_to '+ New Ticket', new_ticket_path %>
+	<!--<%=link_to 'By People'%>-->
+<br /><br />
+	<%=render :partial => 'tickets/ticket', :object => @tickets%>		
+</div>
