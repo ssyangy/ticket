@@ -26,3 +26,9 @@
 	</tr>
 	<% end %>
 </table>
+
+<% @tickets.each do |ticket|%>
+<div class="ticket-block">
+	<p><%=ticket.content%></p>
+</div>
+<%end%>
