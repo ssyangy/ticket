@@ -1,0 +1,20 @@
+@charset "utf-8";
+
+img { border:0;}
+
+#popWindow{ position:absolute; color:#000; z-index:1009; top:40%; left:30%;}
+#popWindow_bg{ position:absolute; z-index:1008; filter:alpha(opacity=50); width:100%; height:100%; background:#000; opacity: 0.5;-moz-opacity: 0.5;left:0;top:0; }
+#popWindowClosed{ position:absolute; margin:-12px 0 0 -15px;}
+
+.top_a{ background:url(../images/left_top.png); width:12px; height:10px; }
+.top_b{ background:url(../images/middle_top.png); height:10px;  }
+.top_c{ background:url(../images/right_top.png); width:12px; height:10px; }
+
+.middle_a{ background:url(../images/left_middle.png); width:12px; }
+.middle_b{ background:#fff; padding:10px; }
+.middle_b *{ vertical-align:middle; } 
+.middle_c{ background:url(../images/right_middle.png); width:12px; }
+
+.bottom_a{ background:url(../images/left_bottom.png); width:12px; height:10px; }
+.bottom_b{ background:url(../images/bottom_middle.png); height:10px; }
+.bottom_c{ background:url(../images/right_bottom.png); width:12px; height:10px; }
