@@ -1,3 +1,6 @@
+@charset "utf-8";
+
+
 a{
 	color: #426DC9!important;
 	text-decoration:none;
@@ -81,6 +84,7 @@ a{
 .mr30{
 	margin-right:30px;
 }
+/*
 table{
 	text-align:left;
 	border-collapse:collapse;
@@ -95,6 +99,7 @@ table th{
 table .finish{
 	color:#ccc;
 }
+*/
 .current_label{
 	background-color:#6b72bf;
 	color:#fff;
@@ -120,6 +125,11 @@ table .finish{
 	margin-top:30px;
 }
 
+
+img { border:0;}
+
+#popWindowClosed{ position:absolute; margin:-12px 0 0 -15px;}
+
 .top_a {
 background: url("/images/left_top.png");
 width: 12px;
@@ -140,7 +150,8 @@ width: 12px;
 }
 .middle_b {
 background: white;
-padding: 10px;
+padding: 5px 8px;
+vertical-align:top;
 }
 .middle_c {
 background: url("/images/right_middle.png");
@@ -163,21 +174,29 @@ height: 10px;
 
 
 .a-ticket{
-	padding:10px 10px;
-	margin-right:20px;
-	margin-bottom:20px;
-	background-color:#fcf0cc;
 	float:left;
-	width:180px;
-	height:230px;
+	margin-right:15px;
+}
+.ticket-top{
+	margin-bottom:10px;
+}
+.ticket-content{
+	height:110px;
 	font-weight:bold;
 }
+.ticket-label{
+	border-bottom:1px solid #ddd;
+	margin-bottom:8px;
+	height:45px;
+}
+
+
 h1 {
 -webkit-padding-end: 24px;
 -webkit-user-select: none;
 color: #53637D;
 font-size: 200%;
-font-weight: normal;
+font-weight: bold;
 margin: 0;
 padding-bottom: 4px;
 padding-top: 13px;

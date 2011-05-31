@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
   <title>Code</title>
@@ -12,11 +12,11 @@
 <body>
 
 	<div id="nav">
-		<h1 id="logo">Ticket</h1>
+		<h1 id="logo">ElfTicket</h1>
 		<div id="navbar-outer">
 			<ul id="navbar">
 				<% if session[:nav] == 0%>
-					<li class="navbar-item navbar-item-selected">Dashboard</li>
+					<li class="navbar-item navbar-itemtem-selected">Dashboard</li>
 				<%else%>
 					<li class="navbar-item"><%=link_to 'Dashboard', :controller => 'dashboard'%></li>
 				<%end%>
