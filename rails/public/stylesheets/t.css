@@ -214,3 +214,8 @@ margin-bottom: 0px;
 min-width: 4em;
 padding: 3px 12px 3px 12px;
 }
+input[type="text"]{
+	border: 1px solid #999999;
+	padding: 3px;
+	font-size:12px;
+}
