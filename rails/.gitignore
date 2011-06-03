@@ -2,10 +2,5 @@
 db/*.sqlite3
 log/*.log
 tmp/
-<<<<<<< HEAD
 config/database.yml
-ticket-textmate.tmproj
-=======
-ticket-textmate-proj.tmproj
-
->>>>>>> d0755a45ec5cfa3c06971cb5c3feb08e241e1756
+ticket-proj.tmproj
