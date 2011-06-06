@@ -1,12 +1,16 @@
-<h1>Pet Social</h1>
-<p>With electronic outlet GPS, making social with pet</p>
-
-<div class="action-bar">
-	<%=text_field_tag "ticket-title", nil, {:size => 60}%><button>Create Ticket</button>
+<div class="project-header">
+	<h1>Pet Social</h1>
+	<p>With electronic outlet GPS, making social with pet</p>
+</div>
+<hr />
+<div class="ticket-new">
+	<%=text_field_tag "ticket-title-new", nil, {:class => 'ticket-title-input', :size => 50}%><button id="ticket-new-btn" class="btn">New Ticket</button>
 </div>
 <br />
-<div class="tickets">
 
+
+
+<div class="tickets">
 	<div class="a-ticket">
 	<table width="200" height="250" border="0" cellpadding="0" cellspacing="0">
 		<tbody>

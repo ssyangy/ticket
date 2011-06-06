@@ -29,6 +29,9 @@ public
     pp "session[:user_type] = #{session[:user_type]}, session[:ticket_type] = #{session[:ticket_type]}"
     
     @tickets = Ticket.filter(@project.id, current_user.id, session[:ticket_type])
+    @ticket = Ticket.new
+    @milestones = @project.milestones
+    @members = @project.members
 
     respond_to do |format|
       format.html # show.html.erb

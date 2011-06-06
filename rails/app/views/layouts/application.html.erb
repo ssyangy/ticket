@@ -2,14 +2,70 @@
 <html>
 <head>
   <title>Code</title>
-  <%= stylesheet_link_tag :all %>
+  <%= stylesheet_link_tag "t" %>
+  <%= stylesheet_link_tag "scaffold" %>
   <%= csrf_meta_tag %>
 	<link type="text/css" href="/stylesheets/redmond/jquery-ui-1.8.11.custom.css" rel="stylesheet" />	
 	<script type="text/javascript" src="/javascripts/jquery-1.5.1.min.js"></script>
 	<script type="text/javascript" src="/javascripts/jquery-ui-1.8.11.custom.min.js"></script>
   <%= javascript_include_tag 'rails', 'application' %> 
+	<script>
+		$(function() {
+			function pageHeight(){ 
+				if($.browser.msie){ 
+				return document.compatMode == "CSS1Compat"? document.documentElement.clientHeight : 
+				document.body.clientHeight; 
+				}else{ 
+				return self.innerHeight; 
+				} 
+			}; 
+
+			//返回当前页面宽度 
+			function pageWidth(){ 
+				if($.browser.msie){ 
+				return document.compatMode == "CSS1Compat"? document.documentElement.clientWidth : 
+				document.body.clientWidth; 
+				}else{ 
+				return self.innerWidth; 
+				} 
+			};
+			
+			$("#ticket-modal").hide();
+
+			$("#ticket-new-btn").click(function() {
+				$("#ticket-modal").css('left', function(){
+					return (pageWidth() - $("#ticket-modal").width())/2 + "px";
+				});
+				
+				$("#ticket-overlay").height($("#ticket-modal").height() + 10);
+				$("#ticket-overlay").width($("#ticket-modal").width() + 20);
+				$("#overlay").addClass("overlay");
+				$("#ticket-overlay").addClass("ticket-overlay");
+				$("#ticket-overlay").css('left', function(){
+					return (pageWidth() - $("#ticket-overlay").width())/2 + "px";
+				});
+				runEffect();
+				return false;
+			});	
+			function runEffect() {
+				// most effect types need no options passed by default
+				var options = {};
+				// run the effect
+				$("#ticket-modal").show("blind", options, 500, null);
+				$("#ticket-overlay").show("blind", options, 500, null);
+			};
+		});
+	</script>
 </head>
 <body>
+	<div id="overlay"></div>
+	<div id="ticket-overlay"></div>
+	<div id="ticket-modal" class="ticket-modal">
+		<div id="ticket-modal-inner">
+			<h1>New Ticket</h1>
+			<%= render 'tickets/form' %>
+		</div>
+	</div>
 
 	<div id="nav">
 		<h1 id="logo">ElfTicket</h1>

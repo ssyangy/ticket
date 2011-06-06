@@ -20,13 +20,7 @@ $(function() {
   <% end %>
 
   <div class="field">
-    <%= f.label :type %><br />
-    <%= f.radio_button :ticket_type, 0, :checked => @ticket.ticket_type.nil?? true : @ticket.ticket_type == 0 %><%= f.label :type_feature, "feature"%>
-	<%= f.radio_button :ticket_type, 1 %><%= f.label :type_issue, "issue"%>
-  </div>
-  <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_area :content, :rows => 6, :cols => 60 %>
+    <%= f.text_area :content, :rows => 12, :cols => 75 %>
   </div>
   <div class="field">
 	<table>
@@ -36,29 +30,26 @@ $(function() {
 			    <%= f.select :priority, Ticket::Priorities, :selected => @ticket.priority %>
 				</td>
 				<td>
-					<%= f.label :milestone %><br />
-					<%= f.select :milestone_id, @milestones.collect {|m| [m.name, m.id]}, :selected => @ticket.milestone_id%>
-				</td>
-				<td>
 					<%= f.label :assignee %><br />
 				    <%= f.select :assignee, @members.collect {|p| [User.find(p.user_id).login, p.user_id]}, :selected => @ticket.assignee %>
 				</td>
-			</tr>
-			<tr>
-				<td><%= f.label "Est. start"%><br />
-					<%= f.text_field :est_start, {:size => 11}%>
-				</td>
-				<td><%= f.label "Est. end"%><br />
-					<%= f.text_field :est_end, {:size => 11}%>
-				</td>
-				<td><%= f.label :status %><br />
-			    	<%= f.select :status, Ticket::Statuses, :selected => @ticket.status %>
+				<td>
+					<%= f.label :milestone %><br />
+					<%= f.select :milestone_id, @milestones.collect {|m| [m.name, m.id]}, :selected => @ticket.milestone_id%>
 				</td>
 			</tr>
 		</tbody>
 	</table>
   </div>
+  <div class="field">
+	<%= f.label :attachments %><br />
+	<div class="attachment"><div class="attachment-inner">drop file here</div></div>
+	<div class="attachment"><div class="attachment-inner">drop file here</div></div>
+	<div class="attachment"><div class="attachment-inner">drop file here</div></div>
+  </div>
+  <div class="clearfix"></div>
+<br />
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => 'btn' %><span class="mr30"></span><%=link_to "Cancel", :class => 'link-alert'%>
   </div>
 <% end %>
